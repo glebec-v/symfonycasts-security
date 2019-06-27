@@ -11,4 +11,22 @@ services:
     volumes:
       - ./backend:/var/www/backend
     ports:
-      - "8000:8000"    
+      - "8000:8000"  
+  postgres:
+    image: postgres:10-alpine
+    restart: always
+    container_name: ${COMPOSE_PROJECT_NAME}-postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 35432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+#    networks:
+#      - all
+#      - default  
+
+# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/
+volumes:
+  postgres_data:
+    driver: local
