@@ -1,0 +1,14 @@
+version: "3"
+services:
+  php-dev:
+    image: sptr/hospital/php-dev-core:latest
+    environment:
+      - XDEBUG_CONFIG="remote_host=${XDEBUG_REMOTE_HOST} remote_port=${XDEBUG_REMOTE_PORT}"
+    container_name: ${COMPOSE_PROJECT_NAME}-php-dev
+    hostname: ${COMPOSE_PROJECT_NAME}-php-dev
+    restart: always
+    working_dir: /var/www/backend
+    volumes:
+      - ./backend:/var/www/backend
+    ports:
+      - "8000:8000"    
