@@ -15,7 +15,7 @@ class Version20180430194518 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
 	    $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('ALTER TABLE comment ADD COLUMN is_deleted SMALLINT NOT NULL');
+        $this->addSql('ALTER TABLE comment ADD COLUMN is_deleted BOOLEAN NOT NULL');
     }
 
     public function down(Schema $schema): void
